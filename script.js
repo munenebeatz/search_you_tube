@@ -95,6 +95,7 @@ function getButtons(prev, next){
 
 function nextPage(){
     console.log('NEXT page');
+    return;
 }
 
 function prevPage(){
