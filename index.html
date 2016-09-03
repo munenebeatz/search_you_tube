@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>SearchVids</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Search<span>Vids</span></h1>
+            <p>Search Youtube from Here!</p>
+        </header>
+        <section>
+            <form id="search-form" name="search-form" onsubmit="return search()" action="">
+                <div class="fieldContainer">
+                    <input type="search" id="query" class="search-field" placeholder="Search YouTube..."/>
+                    <input type="submit" name="search-btn" id="search-btn" value=""/>
+                </div>
+            </form>
+
+            <ul id="results"></ul>
+
+            <div id="buttons"></div>
+
+        </section>
+
+        <footer>
+            <p>Copyright &copy; 2026, Brian Munene</p>
+        </footer>
+    </div>
+
+<!--call jQuery-->
+<script src="../dist/jQ/jquery-3.1.0.min.js"></script>
+
+<!-- Add mousewheel plugin (this is optional) -->
+<script type="text/javascript" src="../dist/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="../dist/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<script type="text/javascript" src="../dist/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="../dist/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="../dist/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="../dist/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+<link rel="stylesheet" href="../dist/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="../dist/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<!--Call custom js-->
+<script src="script.js"></script>
+
+</body>
+</html>
