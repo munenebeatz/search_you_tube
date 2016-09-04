@@ -94,7 +94,7 @@ function getButtons(prev, next){
 }
 
 function nextPage(){
-    console.log('NEXT page');
+    console.log('git commit NEXT');
     return;
 }
 
