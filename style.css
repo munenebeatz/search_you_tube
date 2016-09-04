@@ -133,3 +133,20 @@ ul{
 .cTitle{
     color: crimson;
 }
+
+.button-container{
+    margin-top: 25px;
+}
+
+.paging-button{
+    background-color: #c8c8c8;
+    padding: 5px 13px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    color: #333;
+    cursor: pointer;
+}
+
+.paging-button:hover{
+    text-decoration: underline;
+}
