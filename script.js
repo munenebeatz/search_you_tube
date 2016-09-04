@@ -3,10 +3,11 @@
  */
 
 (function ($){
-    //searchField animation
-    searchFieldAnimation();
     //for fancybox
     activateFancy();
+
+    //searchField animation
+    searchFieldAnimation();
 
     //prevent formSubmission
     stopFormSubmit();
@@ -14,7 +15,7 @@
 
 
 function activateFancy(){
-    $('.fancy').fancybox();
+    $('.fancybox').fancybox();
 }
 
 function searchFieldAnimation(){
@@ -62,7 +63,7 @@ function getOutput(item){
         output += '<img src="'+thumb+'"/>';
     output += '</div>';
     output += '<div class="list-right">';
-        output += '<h3>'+title+'</h3>';
+        output += '<h3><a class="fancybox fancybox.iframe" href="http://www.youtube.com/embed/'+videoID+'?enablejsapi=1&wmode=opaque">'+title+'</a></h3>';
         output += '<small> By <span class="cTitle">'+channelTitle+'</span> on '+videoDate+'</small>';
         output += '<p>'+description+'</p>';
     output += '</div>';
@@ -94,12 +95,89 @@ function getButtons(prev, next){
 }
 
 function nextPage(){
-    console.log('git commit NEXT');
-    return;
+    //page token
+    var token = $('#next-button').data('token'),
+        q = $('#next-button').data('query');
+
+    //clear results
+    $('#results').html('');
+    $('#buttons').html('');
+
+    //Get form input
+    var q = $('#query').val();
+
+    //Run GET request on YouTube API
+    $.get(
+        'https://www.googleapis.com/youtube/v3/search',{
+            part: 'snippet, id',
+            q: q,
+            pageToken: token,
+            type: 'video',
+            key: ' AIzaSyBgsSYN2Gq-3GPvo7gONAtw-PYtVyIEtKQ'},
+        function (data) {
+            var nextPageToken, prevPageToken;
+            nextPageToken = data.nextPageToken;
+            prevPageToken = data.prevPageToken;
+
+            console.log(data);
+
+            $.each(data.items, function (i, item) {
+                //Get Results
+                var output = getOutput(item);
+
+                //Display Rsults
+                $('#results').append(output);
+            });
+
+            var buttons = getButtons(prevPageToken, nextPageToken);
+            //display buttons
+            $('#buttons').append(buttons);
+        }
+
+    );
 }
 
 function prevPage(){
-    return;
+    //page token
+    var token = $('#prev-button').data('token'),
+        q = $('#prev-button').data('query');
+
+    //clear results
+    $('#results').html('');
+    $('#buttons').html('');
+
+    //Get form input
+    var q = $('#query').val();
+
+    //Run GET request on YouTube API
+    $.get(
+        'https://www.googleapis.com/youtube/v3/search',{
+            part: 'snippet, id',
+            q: q,
+            pageToken: token,
+            type: 'video',
+            key: ' AIzaSyBgsSYN2Gq-3GPvo7gONAtw-PYtVyIEtKQ'},
+        function (data) {
+            var nextPageToken, prevPageToken;
+            nextPageToken = data.nextPageToken;
+            prevPageToken = data.prevPageToken;
+
+            console.log(data);
+
+            $.each(data.items, function (i, item) {
+                //Get Results
+                var output = getOutput(item);
+
+                //Display Rsults
+                $('#results').append(output);
+            });
+
+            var buttons = getButtons(prevPageToken, nextPageToken);
+            //display buttons
+            $('#buttons').append(buttons);
+        }
+
+    );
 }
 
 function search(){

@@ -140,11 +140,12 @@ ul{
 
 .paging-button{
     background-color: #c8c8c8;
-    padding: 5px 13px;
+    padding: 8px 13px;
     border: 1px solid #cccccc;
     border-radius: 5px;
     color: #333;
     cursor: pointer;
+    margin-left: 10px;
 }
 
 .paging-button:hover{
